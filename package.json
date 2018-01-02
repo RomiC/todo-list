@@ -28,8 +28,8 @@
     "webpack": "^3.10.0"
   },
   "scripts": {
-    "postinstall": "",
-    "start": "./build/index.js",
+    "postinstall": "npm run build",
+    "start": "node build/server.js",
     "start:dev": "nodemon ./build/index.js",
     "build": "webpack",
     "build:dev": "npm run build -- --watch"
