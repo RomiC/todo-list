@@ -2,11 +2,10 @@ import * as express from 'express';
 import { default as server } from './server/index';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // GraphiQL, a visual editor for queries
 app.use('/graphql', server);
 
 // Start the server
-app.listen(3000, () => {
-  console.log('Go to http://localhost:3000/graphiql to run queries!');
-});
+app.listen(PORT, () => console.log(`Go to http://localhost:${PORT}/graphiql to run queries!`));
