@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "module": "none",
+    "target": "es2015",
     "noImplicitAny": false,
     "sourceMap": false,
     "outDir": "build",
     "lib": [
+      "dom",
       "es2015",
       "esnext.asynciterable"
     ]
   },
   "exclude": [
     "node_modules",
-    "build"
+    "build",
+    "src/server/index"
   ]
 }
