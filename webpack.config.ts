@@ -29,24 +29,24 @@ const commonRules:webpack.Rule[] = [
 ];
 
 const config: webpack.Configuration[] = [
-  {
-    entry: path.join(src, 'index.ts'),
-    output: {
-      filename: 'index.js',
-      libraryTarget: 'commonjs',
-      path: dist
-    },
-    target: 'node',
-    devtool: 'source-map',
-    resolve: commonResolve,
-    externals: commonExternals,
-    module: {
-      rules: commonRules
-    },
-    plugins: [
-      new CleanPlugin([dist])
-    ]
-  },
+  // {
+  //   entry: path.join(src, 'index.ts'),
+  //   output: {
+  //     filename: 'index.js',
+  //     libraryTarget: 'commonjs',
+  //     path: dist
+  //   },
+  //   target: 'node',
+  //   devtool: 'source-map',
+  //   resolve: commonResolve,
+  //   externals: commonExternals,
+  //   module: {
+  //     rules: commonRules
+  //   },
+  //   plugins: [
+  //     new CleanPlugin([dist])
+  //   ]
+  // },
   {
     entry: path.join(srcClient, 'index.ts'),
     output: {
