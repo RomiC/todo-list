@@ -18263,7 +18263,7 @@ module.exports = camelize;
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(2);
 exports.default = (props) => (React.createElement("div", { className: "app" },
-    React.createElement("h1", null, "Hello New World!")));
+    React.createElement("h1", null, "Hello  World!")));
 
 
 /***/ })

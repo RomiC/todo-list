@@ -24,7 +24,7 @@ const rootValue:Object = {
     todos.push({
       id: todos[todos.length - 1].id + 1,
       label,
-      complete: false
+      complete: true
     });
     return todos[todos.length - 1];
   }

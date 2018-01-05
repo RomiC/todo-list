@@ -63,7 +63,11 @@ const config: webpack.Configuration[] = [
       new BrowserSyncPlugin({
         host: 'localhost',
         port: 8080,
-        proxy: 'localhost:3000'
+        ui: {
+          port: 8081,
+        },
+        files: 'build/assets/*',
+        proxy: 'http://localhost:3000'
       }),
       new CleanPlugin([distClient]),
       new HtmlPlugin({
