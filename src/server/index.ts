@@ -1,6 +1,7 @@
 import * as graphqlHTTP from 'express-graphql';
 import { buildSchema, GraphQLTypeResolver } from 'graphql';
-import { ToDo } from '../project';
+
+import ToDo from '../data/Todo';
 
 const todos:ToDo[] = [
   {
