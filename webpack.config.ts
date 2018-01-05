@@ -45,7 +45,7 @@ const config: webpack.Configuration[] = [
       rules: commonRules
     },
     plugins: [
-      new CleanPlugin([dist])
+      new CleanPlugin([path.resolve(dist, '*.js')])
     ]
   },
   {
@@ -63,13 +63,11 @@ const config: webpack.Configuration[] = [
       new BrowserSyncPlugin({
         host: 'localhost',
         port: 8080,
-        ui: {
-          port: 8081,
-        },
+        ui: false,
         files: 'build/assets/*',
         proxy: 'http://localhost:3000'
       }),
-      new CleanPlugin([distClient]),
+      new CleanPlugin([path.resolve(distClient, '*.js')]),
       new HtmlPlugin({
         title: 'ToDo list',
         template: path.resolve(srcClient, 'index.html')

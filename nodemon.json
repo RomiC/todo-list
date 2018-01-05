@@ -4,6 +4,6 @@
     "build/*.js"
   ],
   "ignore": [
-    "build/assets/*.*"
+    "build/assets/"
   ]
 }
