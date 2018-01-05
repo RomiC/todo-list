@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "watch": [
+    "build/*.js"
+  ],
+  "ignore": [
+    "build/assets/"
+  ]
+}

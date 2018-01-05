@@ -70,14 +70,13 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = __webpack_require__(1);
-var index_1 = __webpack_require__(2);
-var app = express();
-var PORT = process.env.PORT || 3000;
-// GraphiQL, a visual editor for queries
+const express = __webpack_require__(1);
+const index_1 = __webpack_require__(2);
+const app = express();
+const PORT = process.env.PORT || 3000;
+app.use('/', express.static('build/assets'));
 app.use('/graphql', index_1.default);
-// Start the server
-app.listen(PORT, function () { return console.log("Go to http://localhost:" + PORT + "/graphiql to run queries!"); });
+app.listen(PORT, () => console.log(`App is running http://localhost:${PORT}/!`));
 
 
 /***/ }),
@@ -93,9 +92,9 @@ module.exports = require("express");
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var graphqlHTTP = __webpack_require__(3);
-var graphql_1 = __webpack_require__(4);
-var todos = [
+const graphqlHTTP = __webpack_require__(3);
+const graphql_1 = __webpack_require__(4);
+const todos = [
     {
         id: 1,
         label: 'walk with dog',
@@ -107,29 +106,49 @@ var todos = [
         complete: false
     }
 ];
-var rootValue = {
-    todos: function (_a) {
-        var _b = _a.id, id = _b === void 0 ? null : _b, _c = _a.label, label = _c === void 0 ? null : _c, _d = _a.complete, complete = _d === void 0 ? null : _d;
-        return todos.filter(function (todo) {
-            return (id === null || todo.id === id) &&
-                (label === null || todo.label.indexOf(label) >= 0) &&
-                (complete === null || todo.complete === complete);
-        });
-    },
-    addTodo: function (_a) {
-        var _b = _a.label, label = _b === void 0 ? null : _b;
+const rootValue = {
+    todos: ({ id = null, label = null, complete = null }) => todos.filter((todo) => (id === null || todo.id === id) &&
+        (label === null || todo.label.indexOf(label) >= 0) &&
+        (complete === null || todo.complete === complete)),
+    addTodo: ({ label = null }) => {
         todos.push({
             id: todos[todos.length - 1].id + 1,
-            label: label,
-            complete: false
+            label,
+            complete: true
         });
         return todos[todos.length - 1];
+    },
+    updateTodo: ({ id, label = null, complete = null }) => {
+        const todo = todos.find((todo) => todo.id === id);
+        if (typeof todo === 'undefined') {
+            throw new Error(`Todo with id ${id} doesn't exists!`);
+        }
+        if (label !== null) {
+            todo.label = label;
+        }
+        if (complete !== null) {
+            todo.complete = complete;
+        }
+        return todo;
     }
 };
-var schema = graphql_1.buildSchema("\n  type Todo {\n    id: Int,\n    label: String,\n    complete: Boolean\n  }\n  type Query {\n    todos(id: Int, label: String, complete: Boolean): [Todo]\n  }\n  type Mutation {\n    addTodo(label: String): Todo\n  }\n");
+const schema = graphql_1.buildSchema(`
+  type Todo {
+    id: Int,
+    label: String,
+    complete: Boolean
+  }
+  type Query {
+    todos(id: Int, label: String, complete: Boolean): [Todo]
+  }
+  type Mutation {
+    addTodo(label: String): Todo
+    updateTodo(id: Int!, label: String, complete: Boolean): Todo
+  }
+`);
 exports.default = graphqlHTTP({
-    schema: schema,
-    rootValue: rootValue,
+    schema,
+    rootValue,
     graphiql: true
 });
 
@@ -148,4 +167,4 @@ module.exports = require("graphql");
 
 /***/ })
 /******/ ])));
-//# sourceMappingURL=server.js.map
+//# sourceMappingURL=index.js.map

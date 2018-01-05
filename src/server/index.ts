@@ -24,9 +24,24 @@ const rootValue:Object = {
     todos.push({
       id: todos[todos.length - 1].id + 1,
       label,
-      complete: false
+      complete: true
     });
     return todos[todos.length - 1];
+  },
+  updateTodo: ({id, label = null, complete = null}) => {
+    const todo = todos.find((todo) => todo.id === id);
+
+    if (typeof todo === 'undefined') {
+      throw new Error(`Todo with id ${id} doesn't exists!`);
+    }
+    
+    if (label !== null) {
+      todo.label = label;
+    }
+    if (complete !== null) {
+      todo.complete = complete;
+    }
+    return todo;
   }
 };
 
@@ -41,6 +56,7 @@ const schema = buildSchema(`
   }
   type Mutation {
     addTodo(label: String): Todo
+    updateTodo(id: Int!, label: String, complete: Boolean): Todo
   }
 `);
 
