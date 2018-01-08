@@ -4,10 +4,6 @@ import Todo from '../../data/Todo';
 
 import List from './List';
 
-export interface AppState {
-  todos: Todo[]
-};
-
 export default class App extends React.Component {
   state: AppState;
 
@@ -19,18 +15,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      todos: [
-        {
-          id: 1,
-          label: 'uno',
-          complete: false
-        },
-        {
-          id: 2,
-          label: 'duos',
-          complete: false
-        }
-      ]
+      todos: 
     };
   }
 

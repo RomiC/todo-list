@@ -7,6 +7,12 @@
       "dom",
       "es2015",
       "esnext.asynciterable"
+    ],
+    "typeRoots": [
+      "@types",
+      "./src/client/@types",
+      "./src/data/@types",
+      "./src/server/@types"
     ]
   },
   "include": [

@@ -18256,84 +18256,9 @@ module.exports = camelize;
 
 /***/ }),
 /* 27 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(2);
-const List_1 = __webpack_require__(28);
-;
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.onComplete = (itemId) => this.setState({
-            todos: this.state.todos.map((todo) => todo.id === itemId ? Object.assign(todo, { complete: true }) : todo)
-        });
-        this.state = {
-            todos: [
-                {
-                    id: 1,
-                    label: 'uno',
-                    complete: false
-                },
-                {
-                    id: 2,
-                    label: 'duos',
-                    complete: false
-                }
-            ]
-        };
-    }
-    render() {
-        const { todos } = this.state;
-        return (React.createElement("div", { className: "app" },
-            React.createElement("h1", null, "Hello New World!"),
-            React.createElement(List_1.default, { items: todos, onComplete: this.onComplete })));
-    }
-}
-exports.default = App;
-;
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(2);
-const ListItem_1 = __webpack_require__(29);
-exports.default = (props) => {
-    const onComplete = (itemId) => {
-        if (typeof props.onComplete !== 'undefined') {
-            props.onComplete(itemId);
-        }
-    };
-    return (React.createElement("ul", null, props.items.map((todo) => (React.createElement(ListItem_1.default, { key: todo.id, item: todo, onComplete: onComplete })))));
-};
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(2);
-exports.default = (props) => {
-    const onClick = () => {
-        if (typeof props.onComplete !== 'undefined') {
-            props.onComplete(props.item.id);
-        }
-    };
-    return (React.createElement("li", null,
-        props.item.complete === true ? (React.createElement("s", null, props.item.label)) : (React.createElement("span", null, props.item.label)),
-        props.item.complete === false && (React.createElement("button", { type: "button", onClick: onClick }, "Complete"))));
-};
-
+throw new Error("Module parse failed: Unexpected token (13:8)\nYou may need an appropriate loader to handle this file type.\n|         this.state = {\r\n|             todos: \r\n|         };\r\n|     }\r\n|     render() {\r");
 
 /***/ })
 /******/ ]);
