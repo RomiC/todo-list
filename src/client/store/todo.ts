@@ -29,7 +29,7 @@ const initStore: TodoStore = {
   ]
 };
 
-export const todoReducer: Reducer<TodoStore> = (store: TodoStore = initStore, action: TodoAction) => {
+export const todo: Reducer<TodoStore> = (store: TodoStore = initStore, action: TodoAction) => {
   switch (action.type) {
     case ADD_TODO:
       return {
