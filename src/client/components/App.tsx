@@ -1,35 +1,12 @@
 import * as React from 'react';
+import ListContainer from '../containers/ListContainer';
 
-import Todo from '../../data/Todo';
+const App: React.StatelessComponent = () => (
+  <div className="app">
+    <h1>Hello New World!</h1>
 
-import List from './List';
+    <ListContainer />
+  </div>
+);
 
-export default class App extends React.Component {
-  state: AppState;
-
-  onComplete: (itemId: number) => void = (itemId) => this.setState({
-    todos: this.state.todos.map((todo) => todo.id === itemId ? Object.assign(todo, { complete: true }) : todo)
-  });
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      todos: 
-    };
-  }
-
-  render() {
-    const { todos } = this.state;
-
-    return (
-      <div className="app">
-        <h1>Hello New World!</h1>
-
-        <List
-          items={todos}
-          onComplete={this.onComplete} />
-      </div>
-    );
-  }
-};
+export default App;

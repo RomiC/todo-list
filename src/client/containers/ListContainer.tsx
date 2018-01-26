@@ -5,12 +5,12 @@ import { TodoStore } from '../@types/index';
 
 import List, { ListProps } from '../components/List';
 
-export interface ListStateProps {
+interface StateFromProps {
   items: Todo[]
 };
 
-const mapStateToProps: MapStateToProps<ListStateProps, ListProps, TodoStore> = (state: TodoStore, ownProps: ListProps) => ({
+const mapStateToProps = (state: TodoStore, ownProps: ListProps) => ({
   items: state.list
 });
 
-export default connect(mapStateToProps)(List);
+export default connect<StateFromProps>(mapStateToProps)(List);
